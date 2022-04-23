@@ -101,9 +101,7 @@ class SigninScreen extends StatelessWidget {
                         height: 20,
                       ),
                       FacebookButton(),
-                      SizedBox(
-                        height: 20
-                      ),
+                      SizedBox(height: 20),
                       nextButton(context),
                       SizedBox(
                         height: 40,
@@ -234,18 +232,12 @@ class SigninScreen extends StatelessWidget {
         onPressed: () {
           onGetStartedClicked(context);
         },
-        
       ),
     );
   }
 
-    void onGetStartedClicked(BuildContext context) {
-    Navigator.of(context).pushReplacement(new MaterialPageRoute(
-      builder: (BuildContext context) {
-        return NumberScreen();
-      },
-    ));
+  void onGetStartedClicked(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => NumberScreen()));
   }
-
-
 }
