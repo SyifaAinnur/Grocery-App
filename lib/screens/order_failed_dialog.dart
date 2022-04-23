@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/screens/category_items_screen.dart';
+import 'package:grocery_app/screens/dashboard/dashboard_screen.dart';
 
 class OrderFailedDialogue extends StatelessWidget {
   const OrderFailedDialogue({ Key? key }) : super(key: key);
@@ -78,7 +78,9 @@ class OrderFailedDialogue extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => DashboardScreen()
+                ));
               },
               child: AppText(
                 text: "Back To Home",
