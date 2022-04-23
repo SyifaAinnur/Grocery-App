@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
-import 'package:grocery_app/screens/SingIn/Verification_screen.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
-class NumberScreen extends StatelessWidget {
-  const NumberScreen({Key? key}) : super(key: key);
+class VerifiacationScreen extends StatefulWidget {
+  const VerifiacationScreen({Key? key}) : super(key: key);
 
+  @override
+  State<VerifiacationScreen> createState() => _VerifiacationScreenState();
+}
+
+class _VerifiacationScreenState extends State<VerifiacationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,10 +58,6 @@ class NumberScreen extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(20)),
-                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +68,7 @@ class NumberScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: AppText(
-                          text: "Enter your mobile number",
+                          text: "Enter your 4-digit code",
                           textAlign: TextAlign.start,
                           fontSize: 26,
                           fontWeight: FontWeight.w600,
@@ -79,18 +78,37 @@ class NumberScreen extends StatelessWidget {
                         height: 30,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: IntlPhoneField(
-                          decoration:
-                              InputDecoration(labelText: 'Mobile Number'),
-                          onChanged: (phone) {
-                            print(phone.completeNumber);
-                          },
-                          onCountryChanged: (country) {
-                            print('Country code changed to: ' + country.name);
-                          },
-                        ),
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  _textFieldOTP(first: true, last: false),
+                                  SizedBox(width: 10),
+                                  _textFieldOTP(first: false, last: false),
+                                  SizedBox(width: 10),
+                                  _textFieldOTP(first: false, last: false),
+                                  SizedBox(width: 10),
+                                  _textFieldOTP(first: false, last: true),
+                                ],
+                              )
+                            ],
+                          )),
+                      SizedBox(
+                        height: 20,
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Resend Code",
+                          style: TextStyle(
+                              color: Color(0xff53B175),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -125,6 +143,41 @@ class NumberScreen extends StatelessWidget {
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldOTP({required bool first, last}) {
+    return Container(
+      height: 75,
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: TextField(
+          autofocus: true,
+          onChanged: (value) {
+            if (value.length == 1 && last == false) {
+              FocusScope.of(context).nextFocus();
+            }
+            if (value.length == 0 && first == false) {
+              FocusScope.of(context).previousFocus();
+            }
+          },
+          showCursor: false,
+          readOnly: false,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          keyboardType: TextInputType.number,
+          maxLength: 1,
+          decoration: InputDecoration(
+            counter: Offstage(),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 2, color: Colors.white),
+                borderRadius: BorderRadius.circular(20)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(width: 2, color: Color(0xff53B175)),
+                borderRadius: BorderRadius.circular(20)),
+          ),
         ),
       ),
     );
