@@ -6,6 +6,8 @@ import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
 import 'package:grocery_app/styles/colors.dart';
 
+import 'account_item.dart';
+
 class AccountScreen extends StatelessWidget {
   const AccountScreen({ Key? key }) : super(key: key);
 
@@ -36,10 +38,22 @@ class AccountScreen extends StatelessWidget {
                 ),
               ),
               Column(
-                children: getChildrenWithSeperator(widgets: accountItems.map((e) {
-                  return getAccountItemWidget(e);
-                }), seperator: seperator),
-              )
+                children: getChildrenWithSeperator(
+                  widgets: accountItems.map((e) {
+                    return getAccountItemWidget(e);
+                  }).toList(),
+                  seperator: Divider(
+                    thickness: 1,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              logoutButton(),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
@@ -56,9 +70,73 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  Widget getAccountItemWidger(AccountItem accountItem) {
+  Widget getAccountItemWidget(AccountItem accountItem) {
     return Container(
-      
+      margin: EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 24),
+
+      child: Row(
+        children: [
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: SvgPicture.asset(
+              accountItem.iconPath
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Text(
+            accountItem.label,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          Spacer(),
+          Icon(Icons.arrow_forward_ios)
+        ],
+      ),
+    );
+  }
+
+    Widget logoutButton() {
+    return Container(
+      width: double.maxFinite,
+      margin: EdgeInsets.symmetric(horizontal: 25),
+      child: RaisedButton(
+        visualDensity: VisualDensity.compact,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        color: Color(0xffF2F3F2),
+        textColor: Colors.white,
+        elevation: 0.0,
+        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 25),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: SvgPicture.asset(
+                "assets/icons/account_icons/logout_icon.svg",
+              ),
+            ),
+            Text(
+              "Log Out",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryColor),
+            ),
+            Container()
+          ],
+        ),
+        onPressed: () {},
+      ),
     );
   }
 }
