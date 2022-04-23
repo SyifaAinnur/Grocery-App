@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/screens/dashboard/dashboard_screen.dart';
+import 'package:grocery_app/screens/order_accepted_screen.dart';
 
 class OrderFailedDialogue extends StatelessWidget {
   const OrderFailedDialogue({ Key? key }) : super(key: key);
@@ -67,11 +68,11 @@ class OrderFailedDialogue extends StatelessWidget {
             AppButton(label: "Please Try Again",
             fontWeight: FontWeight.w600,
             onPressed: () {
-                // Navigator.of(context).pushReplacement(new MaterialPageRoute(
-                //   builder: (BuildContext context) {
-                //     return OrderAcceptedScreen();
-                //   },
-                // ));
+                Navigator.of(context).pushReplacement(new MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return OrderAcceptedScreen();
+                  },
+                ));
             }),
             Spacer(
               flex: 4,
