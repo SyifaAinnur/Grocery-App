@@ -11,8 +11,34 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return SafeArea(
+      child: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              ListTile(
+                leading: SizedBox(
+                  width: 65,
+                  height: 65,
+                  child: getImageHeader(),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget getImageHeader() {
+    String imagePath = "assets/images/account_image.jpg";
+    return CircleAvatar(
+      radius: 5.0,
+      backgroundImage: AssetImage(imagePath),
+      backgroundColor: AppColors.primaryColor.withOpacity(0.7),
     );
   }
 }
