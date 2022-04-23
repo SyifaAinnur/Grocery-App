@@ -153,7 +153,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-    Widget FacebookButton() {
+  Widget FacebookButton() {
     return Container(
       width: double.maxFinite,
       margin: EdgeInsets.symmetric(horizontal: 25),
