@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/screens/SingIn/Number_screen.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -101,7 +102,11 @@ class SigninScreen extends StatelessWidget {
                       ),
                       FacebookButton(),
                       SizedBox(
-                        height: 60
+                        height: 20
+                      ),
+                      nextButton(context),
+                      SizedBox(
+                        height: 40,
                       )
                     ],
                   ),
@@ -191,4 +196,56 @@ class SigninScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget nextButton(BuildContext context) {
+    return Container(
+      width: double.maxFinite,
+      margin: EdgeInsets.symmetric(horizontal: 25),
+      child: RaisedButton(
+        visualDensity: VisualDensity.compact,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        color: Color(0xffF2F3F2),
+        textColor: Colors.white,
+        elevation: 0.0,
+        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 25),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: SvgPicture.asset(
+                "assets/icons/account_icons/logout_icon.svg",
+              ),
+            ),
+            Text(
+              "Next",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryColor),
+            ),
+            Container()
+          ],
+        ),
+        onPressed: () {
+          onGetStartedClicked(context);
+        },
+        
+      ),
+    );
+  }
+
+    void onGetStartedClicked(BuildContext context) {
+    Navigator.of(context).pushReplacement(new MaterialPageRoute(
+      builder: (BuildContext context) {
+        return NumberScreen();
+      },
+    ));
+  }
+
+
 }
