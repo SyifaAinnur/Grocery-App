@@ -34,6 +34,11 @@ class AccountScreen extends StatelessWidget {
                 fontSize: 16,
                 color: Color(0xff7c7c7c),
                 ),
+              ),
+              Column(
+                children: getChildrenWithSeperator(widgets: accountItems.map((e) {
+                  return getAccountItemWidget(e);
+                }), seperator: seperator),
               )
             ],
           ),
@@ -48,6 +53,12 @@ class AccountScreen extends StatelessWidget {
       radius: 5.0,
       backgroundImage: AssetImage(imagePath),
       backgroundColor: AppColors.primaryColor.withOpacity(0.7),
+    );
+  }
+
+  Widget getAccountItemWidger(AccountItem accountItem) {
+    return Container(
+      
     );
   }
 }
