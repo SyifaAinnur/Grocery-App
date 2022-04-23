@@ -25,6 +25,15 @@ class AccountScreen extends StatelessWidget {
                   height: 65,
                   child: getImageHeader(),
                 ),
+                title: AppText(text: "Syifa Ain'nur", textAlign: TextAlign.start,
+                fontSize: 18, 
+                fontWeight: FontWeight.bold,
+                ),
+                subtitle: AppText(text: "github.com/SyifaAinnur", textAlign: TextAlign.start,
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+                color: Color(0xff7c7c7c),
+                ),
               )
             ],
           ),
@@ -34,7 +43,7 @@ class AccountScreen extends StatelessWidget {
   }
 
   Widget getImageHeader() {
-    String imagePath = "assets/images/account_image.jpg";
+    String imagePath = "assets/images/foto_account.jpg";
     return CircleAvatar(
       radius: 5.0,
       backgroundImage: AssetImage(imagePath),
