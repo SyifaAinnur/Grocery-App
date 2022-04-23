@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
+import 'package:grocery_app/screens/SingIn/Location_screen.dart';
 
 class VerifiacationScreen extends StatefulWidget {
   const VerifiacationScreen({Key? key}) : super(key: key);
@@ -129,7 +130,7 @@ class _VerifiacationScreenState extends State<VerifiacationScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        VerifiacationScreen()));
+                                        LocationScreen()));
                           },
                           child: Icon(
                             Icons.arrow_forward_ios,
