@@ -8,8 +8,8 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/styles/colors.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SigninScreen extends StatelessWidget {
+  const SigninScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
