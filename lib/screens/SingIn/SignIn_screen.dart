@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/screens/SingIn/Number_screen.dart';
+import 'package:grocery_app/screens/dashboard/dashboard_screen.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -82,6 +83,29 @@ class SigninScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text('Does not have account?'),
+                          TextButton(
+                            child: const Text(
+                              'SignUp',
+                              style: TextStyle(fontSize: 15, color: Color(0xff53B175)),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NumberScreen()));
+                              //signup screen
+                            },
+                          )
+                        ],
+                      ),
+                      nextButton(context),
+                      SizedBox(
+                        height: 40,
+                      ),
                       Center(
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -102,10 +126,6 @@ class SigninScreen extends StatelessWidget {
                       ),
                       FacebookButton(),
                       SizedBox(height: 20),
-                      nextButton(context),
-                      SizedBox(
-                        height: 40,
-                      )
                     ],
                   ),
                 ),
@@ -219,7 +239,7 @@ class SigninScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "Next",
+              "Log in",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 18,
@@ -238,6 +258,6 @@ class SigninScreen extends StatelessWidget {
 
   void onGetStartedClicked(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => NumberScreen()));
+        context, MaterialPageRoute(builder: (context) => DashboardScreen()));
   }
 }

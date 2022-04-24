@@ -67,12 +67,31 @@ class NumberScreen extends StatelessWidget {
                         height: 10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: AppText(
-                          text: "Enter your mobile number",
-                          textAlign: TextAlign.start,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w600,
+                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                              labelText: 'Full Name', hintText: "syifa A.M"),
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                              labelText: 'Email', hintText: "Enter your email"),
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        child: TextFormField(
+                          obscureText: true,
+                          obscuringCharacter: "*",
+                          decoration: InputDecoration(
+                              labelText: 'Password', hintText: "Enter password"
+                              
+                              ),
+                          keyboardType: TextInputType.text,
                         ),
                       ),
                       SizedBox(
