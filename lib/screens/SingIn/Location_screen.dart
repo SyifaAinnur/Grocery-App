@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:grocery_app/screens/dashboard/dashboard_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({Key? key}) : super(key: key);
@@ -90,13 +93,12 @@ class _LocationScreenState extends State<LocationScreen> {
                         height: 30,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: AppButton(
-                        label: "Submit",
-                        onPressed: () {
-
-                        }),
-                      )
+                          padding: const EdgeInsets.all(16.0),
+                          child: AppButton(
+                            label: "Submit",
+                            onPressed: () =>
+                                _onAlertWithCustomImagePressed(context),
+                          ))
                     ],
                   ),
                 )
@@ -106,5 +108,28 @@ class _LocationScreenState extends State<LocationScreen> {
         ),
       ),
     );
+  }
+
+  // Alert custom images
+  _onAlertWithCustomImagePressed(context) {
+    Alert(
+      context: context,
+      type: AlertType.success,
+      title: "FLUTTER SAYS...",
+      desc: "Your account has been created successfully, press ok to continue",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "COOL",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DashboardScreen()));
+          },
+          width: 120,
+        )
+      ],
+    ).show();
   }
 }
