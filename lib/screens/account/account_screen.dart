@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/helpers/column_with_seprator.dart';
+import 'package:grocery_app/screens/SingIn/SignIn_screen.dart';
 import 'package:grocery_app/styles/colors.dart';
 
 import 'account_item.dart';
@@ -50,7 +51,7 @@ class AccountScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              logoutButton(),
+              logoutButton(context),
               SizedBox(
                 height: 20,
               ),
@@ -101,7 +102,7 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-    Widget logoutButton() {
+    Widget logoutButton(BuildContext context) {
     return Container(
       width: double.maxFinite,
       margin: EdgeInsets.symmetric(horizontal: 25),
@@ -135,7 +136,10 @@ class AccountScreen extends StatelessWidget {
             Container()
           ],
         ),
-        onPressed: () {},
+        onPressed: () {
+              Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SigninScreen()));
+        },
       ),
     );
   }
